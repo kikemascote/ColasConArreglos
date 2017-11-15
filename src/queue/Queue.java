@@ -22,28 +22,35 @@ public class Queue<T extends Comparable<T>> implements Iterable<T>, iQueue<T>{
 
 
     @Override
-    public void queue(T value) throws QueueFullException {
-
+    public void enqueue(T value) throws QueueFullException {
+        if (isFull()) throw new QueueFullException("sta ieena goe");
+        data[back++ % data.length] = value;
+        count++;
     }
 
     @Override
     public T deQueue() throws QueueEmptyException {
-        return null;
+        if (isEmpty()) throw new QueueEmptyException("osea, sss echale algo goe");
+        count--;
+        return data[++front % data.length];
     }
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return count==0;
     }
 
     @Override
     public boolean isFull() {
-        return false;
+
+        return (count==data.length);
     }
 
     @Override
     public T front() throws QueueEmptyException {
-        return null;
+        if (isEmpty()) throw new QueueEmptyException("osea, sss echale algo goe");
+
+        return data[(front+1) % data.length];
     }
 
     @Override

@@ -1,7 +1,7 @@
 package queue;
 
 public interface iQueue<T> {
-    public void queue(T value) throws QueueFullException;
+    public void enqueue(T value) throws QueueFullException;
     public T deQueue() throws QueueEmptyException;
     public boolean isEmpty();
     public boolean isFull();
